@@ -1,6 +1,32 @@
 ﻿
 bool continueprogram = true;
 
+static bool readContinue()
+{
+    bool continueInputInvalid;
+    do
+    {
+        Console.WriteLine("Do you want to continue? (Y/N)");
+        string userinputcont = Console.ReadLine();
+        userinputcont = userinputcont.ToUpper();
+        if (userinputcont == "Y")
+        {
+            return true;
+        }
+        else if (userinputcont == "N")
+        {
+            return false;
+        }
+        else
+        {
+            Console.WriteLine("Please Enter a valid option (Y/N)");
+            continueInputInvalid = true;
+        }
+    }
+    while (continueInputInvalid);
+    return false;
+}
+
 static string readOperator()
 {
     string operater;
@@ -62,31 +88,6 @@ while (continueprogram)
             break;
 
     }
-    bool continueInputInvalid;
-    do
-    {
-        Console.WriteLine("Do you want to continue? (Y/N)");
-        string userinputcont = Console.ReadLine();
-        userinputcont = userinputcont.ToUpper();
-        if (userinputcont == "Y")
-        {
-            continueprogram = true;
-            continueInputInvalid = false;
-        }
-        else if (userinputcont == "N")
-        {
-            continueprogram = false;
-            continueInputInvalid = false;
-        }
-        else
-        {
-            Console.WriteLine("Please Enter a valid option (Y/N)");
-            continueInputInvalid = true;
-        }
-    }
-    while (continueInputInvalid);
 
-
-
-
+    continueprogram = readContinue();
 }
